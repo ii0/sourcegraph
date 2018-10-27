@@ -1,0 +1,96 @@
+{
+  "name": "@sourcegraph/codeintellify",
+  "version": "3.9.0",
+  "description": "Adds code intelligence to code views on the web",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/codeintellify"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "semantic-release": "semantic-release",
+    "prettier": "prettier '**/{*.{js?(on),ts?(x),scss,yml},.*.js?(on),.*.yml}' --write --list-different",
+    "tslint": "tslint -c tslint.json -p tsconfig.json './src/*.ts?(x)' './testdata/*.ts?(x)' './*.ts?(x)'",
+    "build": "npm run tsc && cpy 'src/**/*.scss' lib/",
+    "tsc": "tsc -p tsconfig.dist.json",
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' karma start",
+    "pretest": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node ./testdata/generate.ts"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "author": "Felix Becker <felix@sourcegraph.com>",
+  "dependencies": {
+    "@sourcegraph/event-positions": "^1.0.0",
+    "@sourcegraph/react-loading-spinner": "0.0.6",
+    "highlight.js": "^9.12.0",
+    "lodash": "^4.17.10",
+    "marked": "^0.4.0",
+    "mdi-react": "^4.0.0",
+    "rxjs": "^6.3.2",
+    "sanitize-html": "^1.18.2",
+    "ts-key-enum": "^2.0.0",
+    "vscode-languageserver-types": "^3.8.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@sourcegraph/prettierrc": "^2.2.0",
+    "@sourcegraph/tsconfig": "^3.0.0",
+    "@sourcegraph/tslint-config": "^12.0.0",
+    "@types/chai": "^4.1.4",
+    "@types/fs-extra": "^5.0.3",
+    "@types/highlight.js": "^9.12.3",
+    "@types/karma": "^1.7.3",
+    "@types/karma-webpack": "^2.0.4",
+    "@types/lodash": "^4.14.110",
+    "@types/marked": "^0.4.0",
+    "@types/mocha": "^5.2.3",
+    "@types/node": "^10.5.0",
+    "@types/react": "^16.4.4",
+    "@types/sanitize-html": "^1.14.0",
+    "@types/sinon": "^5.0.1",
+    "@types/webpack": "^4.4.4",
+    "@types/webpack-env": "^1.13.6",
+    "awesome-typescript-loader": "^5.2.0",
+    "chai": "^4.1.2",
+    "cpy-cli": "^2.0.0",
+    "esm": "^3.0.55",
+    "fs-extra": "^7.0.0",
+    "husky": "^0.14.3",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "karma": "^3.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.1",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-sinon": "^1.0.5",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^3.0.0",
+    "mocha": "^5.2.0",
+    "prettier": "^1.14.2",
+    "raw-loader": "^0.5.1",
+    "react": "^16.3.0",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^15.6.3",
+    "sinon": "^6.0.1",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.10.0",
+    "typescript": "^3.0.0",
+    "webpack": "^4.13.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
