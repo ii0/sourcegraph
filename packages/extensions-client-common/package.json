@@ -89,6 +89,7 @@
     "assert": "^1.4.1",
     "concurrently": "^4.0.1",
     "cpy-cli": "^2.0.0",
+    "deep-strict-equal": "^0.2.0",
     "del-cli": "^1.1.0",
     "esm": "^3.0.82",
     "husky": "^0.14.3",
