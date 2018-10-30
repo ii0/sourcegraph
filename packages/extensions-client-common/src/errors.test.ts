@@ -1,4 +1,4 @@
-import assert from 'assert'
+import deepEqual from 'deep-equal'
 import { asError, isErrorLike } from './errors'
 
 describe('isErrorLike', () => {

@@ -1,7 +1,6 @@
+import deepEqual from 'deep-equal'
 import { describe } from 'mocha'
 import { fuzzyMatches, Span } from './HighlightedMatches'
-
-import deepStrictEqual from 'deep-strict-equal'
 
 describe('fuzzyMatches', () => {
     const TESTS = [
@@ -60,7 +59,7 @@ describe('fuzzyMatches', () => {
     ] as { text: string; pattern: string; want: Span[] }[]
     for (const { text, pattern, want } of TESTS) {
         it(`matches ${JSON.stringify(pattern)} in ${JSON.stringify(text)}`, () => {
-            deepStrictEqual(fuzzyMatches(text, pattern), want)
+            deepEqual(fuzzyMatches(text, pattern), want)
         })
     }
 })

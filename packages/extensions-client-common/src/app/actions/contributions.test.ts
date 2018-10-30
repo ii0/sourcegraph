@@ -1,11 +1,11 @@
-import assert from 'assert'
+import deepEqual from 'deep-equal'
 import { ContributableMenu } from 'sourcegraph/module/protocol'
 import { ActionItemProps } from './ActionItem'
 import { getContributedActionItems } from './contributions'
 
 describe('getContributedActionItems', () => {
     it('gets action items', () =>
-        assert.deepStrictEqual(
+        deepEqual(
             getContributedActionItems(
                 {
                     actions: [
