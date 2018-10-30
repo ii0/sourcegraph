@@ -1,4 +1,4 @@
-import deepEqual from 'deep-equal'
+import { assert } from 'chai'
 import { describe } from 'mocha'
 import { fuzzyMatches, Span } from './HighlightedMatches'
 
@@ -59,7 +59,7 @@ describe('fuzzyMatches', () => {
     ] as { text: string; pattern: string; want: Span[] }[]
     for (const { text, pattern, want } of TESTS) {
         it(`matches ${JSON.stringify(pattern)} in ${JSON.stringify(text)}`, () => {
-            deepEqual(fuzzyMatches(text, pattern), want)
+            assert.deepEqual(fuzzyMatches(text, pattern), want)
         })
     }
 })

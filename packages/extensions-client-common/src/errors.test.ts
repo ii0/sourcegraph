@@ -1,4 +1,4 @@
-import deepEqual from 'deep-equal'
+import { assert } from 'chai'
 import { asError, isErrorLike } from './errors'
 
 describe('isErrorLike', () => {
