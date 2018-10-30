@@ -9,9 +9,7 @@
   },
   "private": true,
   "workspaces": [
-    "sourcegraph-extension-api",
-    "browser-extensions",
-    "extensions-client-common"
+    "packages/*"
   ],
   "engines": {
     "node": ">=8.0.0 <11.0.0",
