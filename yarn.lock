@@ -1519,24 +1519,6 @@
     rxjs "^6.3.2"
     vscode-languageserver-types "^3.8.2"
 
-"@sourcegraph/extensions-client-common@^10.5.0":
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/@sourcegraph/extensions-client-common/-/extensions-client-common-10.5.0.tgz#c78c57ab005622b53fe7678afe2d11fc05c1d541"
-  integrity sha512-1ZWWLGjGKovV3N78AUvyaPiG+eCG8awiXNcKaDxPAgizM7iCjZrQUjdfhCCMR8nvTDY/d5EI76LlAU1hbuBVJw==
-  dependencies:
-    "@slimsag/react-shortcuts" "^1.2.0"
-    bootstrap "^4.1.3"
-    lodash-es "^4.17.10"
-    marked "^0.5.1"
-    react "^16.4.2"
-    react-router "^4.3.1"
-    react-router-dom "^4.3.1"
-    reactstrap "^6.4.0"
-    rxjs "^6.3.2"
-    sourcegraph "^18.2.0"
-    string-score "^1.0.1"
-    ts-key-enum "^2.0.0"
-
 "@sourcegraph/phabricator-extension@^1.18.0":
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/@sourcegraph/phabricator-extension/-/phabricator-extension-1.18.0.tgz#238be49e449fe7f773e6ff6881e3c480a5e6aaed"
@@ -4545,7 +4527,7 @@ browserslist@^4.1.0:
     electron-to-chromium "^1.3.62"
     node-releases "^1.0.0-alpha.11"
 
-browserslist@^4.3.3:
+browserslist@^4.3.3, browserslist@^4.3.4:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.3.4.tgz#4477b737db6a1b07077275b24791e680d4300425"
   integrity sha512-u5iz+ijIMUlmV8blX82VGFrB9ecnUg5qEt55CMZ/YJEhha+d8qpBfOFuutJ6F/VKRXjZoD33b6uvarpPxcl3RA==
@@ -6564,7 +6546,7 @@ debug@^4.0.0:
   dependencies:
     ms "^2.1.1"
 
-debuglog@*, debuglog@^1.0.1:
+debuglog@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -9687,7 +9669,7 @@ import-local@^2.0.0:
     pkg-dir "^3.0.0"
     resolve-cwd "^2.0.0"
 
-imurmurhash@*, imurmurhash@^0.1.4:
+imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -11202,11 +11184,6 @@ lodash-es@^4.17.10:
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.11.tgz#145ab4a7ac5c5e52a3531fb4f310255a152b4be0"
   integrity sha512-DHb1ub+rMjjrxqlB3H56/6MXtm1lSksDp2rA2cNWjG8mlDUYFhUj3Di2Zn5IwSU87xLv8tNIQ7sSwE/YOX/D/Q==
 
-lodash._baseindexof@*:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -11215,32 +11192,10 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
-lodash._bindcallback@*:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
-
-lodash._cacheindexof@*:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
-  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
-
-lodash._createcache@*:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
-  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
-  dependencies:
-    lodash._getnative "^3.0.0"
-
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
-
-lodash._getnative@*, lodash._getnative@^3.0.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._reinterpolate@~3.0.0:
   version "3.0.0"
@@ -11406,11 +11361,6 @@ lodash.pick@4.4.0, lodash.pick@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
   integrity sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM=
-
-lodash.restparam@*:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.set@^4.3.2:
   version "4.3.2"
@@ -11717,11 +11667,6 @@ marked@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.5.0.tgz#9e590bad31584a48ff405b33ab1c0dd25172288e"
   integrity sha512-UhjmkCWKu1SS/BIePL2a59BMJ7V42EYtTfksodPRXzPEGEph3Inp5dylseqt+KbU9Jglsx8xcMKmlumfJMBXAA==
-
-marked@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.5.1.tgz#062f43b88b02ee80901e8e8d8e6a620ddb3aa752"
-  integrity sha512-iUkBZegCZou4AdwbKTwSW/lNDcz5OuRSl3qdcl31Ia0B2QPG0Jn+tKblh/9/eP9/6+4h27vpoh8wel/vQOV0vw==
 
 matchdep@^2.0.0:
   version "2.0.0"
@@ -15008,7 +14953,7 @@ readable-stream@~2.0.6:
     string_decoder "~0.10.x"
     util-deprecate "~1.0.1"
 
-readdir-scoped-modules@*, readdir-scoped-modules@^1.0.0:
+readdir-scoped-modules@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/readdir-scoped-modules/-/readdir-scoped-modules-1.0.2.tgz#9fafa37d286be5d92cbaebdee030dc9b5f406747"
   integrity sha1-n6+jfShr5dksuuve4DDcm19AZ0c=
@@ -16616,22 +16561,6 @@ source-map@^0.7.2:
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
-
-sourcegraph@^18.2.0:
-  version "18.2.0"
-  resolved "https://registry.yarnpkg.com/sourcegraph/-/sourcegraph-18.2.0.tgz#a58bca2a2c8bead85a4ff8223cc956554c7bb655"
-  integrity sha512-Wy+MhIKe2QSEJzkGxg98yMo+x0UKEE0pytcte/XXQ1N7ni5ESD9aOJpYT/zuN0vVT4erA/O6JHwzHODx2KO2AA==
-  dependencies:
-    minimatch "^3.0.4"
-    rxjs "^6.3.2"
-
-sourcegraph@^18.3.0:
-  version "18.3.0"
-  resolved "https://registry.yarnpkg.com/sourcegraph/-/sourcegraph-18.3.0.tgz#d624b042aabf5aa5c90cefad59cc05f697ae448c"
-  integrity sha512-jTbfpcNwfSU63rU6RcpEg8NYGdqR3UyF8SlEnxe6Wg79lUa3Mocq3djTYgnf8SGVovdcHXGZQYWaLGeALgvsxw==
-  dependencies:
-    minimatch "^3.0.4"
-    rxjs "^6.3.2"
 
 sparkles@^1.0.0:
   version "1.0.1"
