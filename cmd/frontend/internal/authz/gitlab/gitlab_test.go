@@ -219,7 +219,7 @@ func (g GitLab_FetchAccount_Test) run(t *testing.T) {
 
 func Test_GitLab_RepoPerms(t *testing.T) {
 	gitlabMock := mockGitLab{
-		acls: map[authz.AuthzID][]string{
+		acls: map[string][]string{
 			"101": []string{"bl/repo-1", "bl/repo-2", "bl/repo-3", "org/repo-1", "org/repo-2", "org/repo-3", "bl/a"},
 			"102": []string{"kl/repo-1", "kl/repo-2", "kl/repo-3"},
 		},
@@ -350,7 +350,7 @@ func (g GitLab_RepoPerms_Test) run(t *testing.T) {
 
 func Test_GitLab_RepoPerms_cache(t *testing.T) {
 	gitlabMock := mockGitLab{
-		acls: map[authz.AuthzID][]string{
+		acls: map[string][]string{
 			"bl": []string{"bl/repo-1", "bl/repo-2", "bl/repo-3", "org/repo-1", "org/repo-2", "org/repo-3"},
 			"kl": []string{"kl/repo-1", "kl/repo-2", "kl/repo-3"},
 		},
@@ -759,7 +759,8 @@ func Test_GitLab_RepoPerms(t *testing.T) {
 type mockGitLab struct {
 	t *testing.T
 
-	acls       map[authz.AuthzID][]string
+	// acls is a map from GitLab user id to list of accessible repository paths on GitLab
+	acls       map[string][]string
 	projs      map[string]*gitlab.Project
 	users      []*gitlab.User
 	maxPerPage int
@@ -849,7 +850,7 @@ func (m *mockGitLab) ListProjects(ctx context.Context, urlStr string) (proj []*g
 	if err != nil {
 		m.t.Fatalf("could not parse ListProjects urlStr %q: %s", urlStr, err)
 	}
-	repoNames := m.acls[authz.AuthzID(u.Query().Get("sudo"))]
+	repoNames := m.acls[u.Query().Get("sudo")]
 	allProjs := make([]*gitlab.Project, len(repoNames))
 	for i, repoName := range repoNames {
 		proj, ok := m.projs[repoName]
