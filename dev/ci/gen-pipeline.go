@@ -50,12 +50,14 @@ func main() {
 	// 	bk.Cmd("yarn run prettier"))
 
 	// pipeline.AddStep(":typescript:",
+	//  bk.Env("CYPRESS_INSTALL_BINARY", "0"),
 	// 	bk.Env("PUPPETEER_SKIP_CHROMIUM_DOWNLOAD", "true"),
 	// 	bk.Env("FORCE_COLOR", "1"),
 	// 	bk.Cmd("yarn --frozen-lockfile"),
 	// 	bk.Cmd("yarn run tslint"))
 
 	// pipeline.AddStep(":stylelint:",
+	//  bk.Env("CYPRESS_INSTALL_BINARY", "0"),
 	// 	bk.Env("PUPPETEER_SKIP_CHROMIUM_DOWNLOAD", "true"),
 	// 	bk.Env("FORCE_COLOR", "1"),
 	// 	bk.Cmd("yarn --frozen-lockfile"),
@@ -66,6 +68,7 @@ func main() {
 	// 	bk.Cmd("yarn run graphql-lint"))
 
 	// pipeline.AddStep(":webpack:",
+	//  bk.Env("CYPRESS_INSTALL_BINARY", "0"),
 	// 	bk.Env("PUPPETEER_SKIP_CHROMIUM_DOWNLOAD", "true"),
 	// 	bk.Env("FORCE_COLOR", "1"),
 	// 	bk.Cmd("yarn --frozen-lockfile"),
@@ -74,6 +77,7 @@ func main() {
 	// 	bk.Cmd("GITHUB_TOKEN= yarn run bundlesize"))
 
 	// pipeline.AddStep(":mocha:",
+	//  bk.Env("CYPRESS_INSTALL_BINARY", "0"),
 	// 	bk.Env("PUPPETEER_SKIP_CHROMIUM_DOWNLOAD", "true"),
 	// 	bk.Env("FORCE_COLOR", "1"),
 	// 	bk.Cmd("yarn --frozen-lockfile"),
@@ -94,6 +98,8 @@ func main() {
 	// 	bk.ArtifactPaths("coverage.txt"))
 
 	pipeline.AddStep(":typescript:",
+		bk.Env("CYPRESS_INSTALL_BINARY", "0"),              // for speed
+		bk.Env("PUPPETEER_SKIP_CHROMIUM_DOWNLOAD", "true"), // for speed
 		bk.Cmd("yarn workspace sourcegraph run prettier"),
 		bk.Cmd("yarn workspace sourcegraph run tslint"),
 		bk.Cmd("yarn workspace sourcegraph run build"),
@@ -101,6 +107,25 @@ func main() {
 		bk.Cmd("yarn workspace sourcegraph run cover"),
 		bk.Cmd("yarn workspace sourcegraph run nyc report --reporter json"),
 		bk.Cmd("cd packages/sourcegraph-extension-api && bash <(curl -s https://codecov.io/bash)"))
+
+	pipeline.AddStep(":typescript:",
+		bk.Env("CYPRESS_INSTALL_BINARY", "0"),
+		bk.Env("PUPPETEER_SKIP_CHROMIUM_DOWNLOAD", "true"),
+		bk.Cmd("yarn workspace @sourcegraph/extensions-client-common run prettier"),
+		bk.Cmd("yarn workspace @sourcegraph/extensions-client-common run tslint"),
+		bk.Cmd("yarn workspace @sourcegraph/extensions-client-common run build"),
+		bk.Cmd("yarn workspace @sourcegraph/extensions-client-common run typecheck"),
+		bk.Cmd("yarn workspace @sourcegraph/extensions-client-common run cover"),
+		bk.Cmd("yarn workspace @sourcegraph/extensions-client-common run nyc report --reporter json"),
+		bk.Cmd("cd packages/extensions-client-common && bash <(curl -s https://codecov.io/bash)"))
+
+	pipeline.AddStep(":typescript:",
+		bk.Cmd("yarn workspace browser-extensions run prettier"),
+		bk.Cmd("yarn workspace browser-extensions run tslint"),
+		bk.Cmd("yarn workspace browser-extensions run browserslist"),
+		bk.Cmd("yarn workspace browser-extensions run build"),
+		bk.Cmd("yarn workspace browser-extensions run test:ci"),
+		bk.Cmd("yarn workspace browser-extensions run test:e2e"))
 
 	// pipeline.AddWait()
 
