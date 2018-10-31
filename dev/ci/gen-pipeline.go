@@ -97,8 +97,8 @@ func main() {
 		bk.Cmd("yarn workspace sourcegraph run build"),
 		bk.Cmd("yarn workspace sourcegraph run typecheck"),
 		bk.Cmd("yarn workspace sourcegraph run cover"),
-		bk.Cmd("cd sourcegraph-extension-api && ./node_modules/.bin/nyc report --reporter json"),
-		bk.Cmd("cd sourcegraph-extension-api && bash <(curl -s https://codecov.io/bash)"))
+		bk.Cmd("yarn workspace sourcegraph run nyc report --reporter json"),
+		bk.Cmd("cd packages/sourcegraph-extension-api && bash <(curl -s https://codecov.io/bash)"))
 
 	// pipeline.AddWait()
 
