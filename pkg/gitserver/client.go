@@ -34,12 +34,17 @@ import (
 	log15 "gopkg.in/inconshreveable/log15.v2"
 )
 
-var gitservers = env.Get("SRC_GIT_SERVERS_TODO_DUPLICATE", "gitserver:3178", "addresses of the remote gitservers")
+// AddrsReady indicates when the DefaultClient's addresses are ready for use.
+var AddrsReady = make(chan struct{})
 
 // DefaultClient is the default Client. Unless overwritten it is connected to servers specified by SRC_GIT_SERVERS.
 var DefaultClient = &Client{
 	Addrs: func(ctx context.Context) []string {
-		return strings.Fields(gitservers)
+		<-AddrsReady
+		gitserverListCache.RLock()
+		addrs := gitserverListCache.addrs
+		gitserverListCache.RUnlock()
+		return addrs
 	},
 	HTTPClient: &http.Client{
 		// nethttp.Transport will propagate opentracing spans
@@ -56,6 +61,32 @@ var DefaultClient = &Client{
 	// frontend internal API)
 	UserAgent: filepath.Base(os.Args[0]),
 }
+
+func init() {
+	go func() {
+		ctx := context.Background()
+		api.WaitForFrontend(ctx)
+		for {
+			addrs, err := api.InternalClient.GitServerAddrs(ctx)
+			if err != nil {
+				log15.Error("failed to discover gitserver instances via frontend internal API", "error", err)
+			} else {
+				gitserverListCache.Lock()
+				gitserverListCache.addrs = addrs
+				if gitserverListCache == nil {
+					close(AddrsReady)
+				}
+				gitserverListCache.Unlock()
+			}
+			time.Sleep(5 * time.Second)
+		}
+	}()
+}
+
+var gitserverListCache = &struct {
+	sync.RWMutex
+	addrs []string
+}{}
 
 // Client is a gitserver client.
 type Client struct {
