@@ -39,6 +39,9 @@ func main() {
 	bk.OnEveryStepOpts = append(bk.OnEveryStepOpts,
 		bk.Env("GO111MODULE", "on"))
 
+	pipeline.AddStep(":typescript:",
+		bk.Cmd("yarn --frozen-lockfile"))
+
 	// pipeline.AddStep(":white_check_mark:",
 	// 	bk.Cmd("./dev/check/all.sh"))
 
@@ -91,7 +94,6 @@ func main() {
 	// 	bk.ArtifactPaths("coverage.txt"))
 
 	pipeline.AddStep(":typescript:",
-		bk.Cmd("yarn --frozen-lockfile"),
 		bk.Cmd("yarn workspace sourcegraph run prettier"),
 		bk.Cmd("yarn workspace sourcegraph run tslint"),
 		bk.Cmd("yarn workspace sourcegraph run build"),
